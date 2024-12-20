@@ -52,7 +52,7 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
     color: #fff;
-    background: linear-gradient(135deg, #6600ff, #2575fb); /* Градиентная кнопка */
+    background: linear-gradient(135deg, #191970, #4B0082); /* Градиентная кнопка */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
