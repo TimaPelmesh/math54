@@ -52,7 +52,7 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
     color: #fff;
-    background: linear-gradient(135deg, #4B0082, #483D8B); /* Градиентная кнопка */
+    background: linear-gradient(135deg, #8A2BE2, #8B008B); /* Градиентная кнопка */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -60,7 +60,7 @@ body {
 
 /* Ховер-эффект для кнопок */
 .modules-list a:hover {
-    background: linear-gradient(135deg, #2575fc, #6a11cb); /* Реверс градиента */
+    background: linear-gradient(135deg, #000080, #6a11cb); /* Реверс градиента */
     transform: translateY(-5px); /* Лёгкий подъём */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
