@@ -1,0 +1,187 @@
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #121212; /* Темный фон */
+    color: #e0e0e0; /* Светлый текст */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    line-height: 1.6;
+    min-height: 100vh;
+    scroll-behavior: smooth; /* Плавное прокручивание */
+}
+
+/* Сброс ссылок и других элементов */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Основные заголовки */
+header, footer, main {
+    width: 100%;
+    max-width: 1100px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    margin: 0 0 20px 0;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Элегантная тень */
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #bb86fc;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+/* Шапка */
+header {
+    background: linear-gradient(135deg, #1f1b2c, #2a2540); /* Градиентный фон */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Раздел "Тема" */
+section {
+    margin: 20px 0 40px 0;
+    text-align: center;
+}
+
+/* Контейнер с практическими работами */
+main {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Сетка карточек */
+    align-items: start;
+    padding-bottom: 50px;
+}
+
+/* Карточка с практической работой */
+main div {
+    background: linear-gradient(140deg, #222, #1a1a1a); /* Градиентный фон карточки */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    text-align: center;
+    overflow: hidden;
+    position: relative; /* Для декоративных элементов */
+}
+
+/* Анимация при наведении */
+main div:hover {
+    background: linear-gradient(145deg, #2a2a2a, #1b1b1b);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Декоративное кольцо при наведении на карточки */
+main div::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(187, 134, 252, 0.2), transparent);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+main div:hover::after {
+    opacity: 1;
+}
+
+/* Содержимое карточки */
+main h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2; /* Поверх декоративного элемента */
+}
+
+button {
+    font-family: inherit;
+    background: linear-gradient(145deg, #bb86fc, #3700b3);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 2; /* Поверх декоративного элемента */
+}
+
+button:hover {
+    background: linear-gradient(145deg, #5e35b1, #311b92);
+    transform: scale(1.08);
+}
+
+button:active {
+    background: linear-gradient(145deg, #311b92, #1a1532);
+    transform: scale(0.95);
+}
+
+/* Подвал */
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 15px 10px;
+    color: #999;
+    font-size: 0.85rem;
+    border-top: 1px solid #373737;
+    background: #1e1e1e;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Адаптивные стили */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+    main div {
+        padding: 15px;
+    }
+}
