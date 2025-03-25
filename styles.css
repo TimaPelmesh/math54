@@ -426,6 +426,98 @@ section h2::after {
     .hero h2 {
         font-size: 2.2rem;
     }
+    
+    .menu-icon {
+        display: flex;
+        margin-left: auto;
+    }
+    
+    .main-nav .container {
+        display: flex;
+        justify-content: flex-end;
+        padding: 15px;
+    }
+    
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background-color: white;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        flex-direction: column;
+        padding: 60px 0 0 0;
+        transition: right 0.3s ease;
+        z-index: 90;
+        overflow-y: auto;
+    }
+    
+    .menu.active {
+        right: 0;
+    }
+    
+    .menu-icon.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .menu-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-icon.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    .main-nav ul li {
+        width: 100%;
+    }
+    
+    .main-nav ul li a {
+        padding: 15px 25px;
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        display: none;
+        width: 100%;
+        background-color: #f8fafc;
+        border-radius: 0;
+    }
+    
+    .dropdown-content a {
+        padding-left: 40px;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+    
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+    
+    /* Затемнение фона при открытом меню */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 80;
+    }
+    
+    .overlay.active {
+        display: block;
+    }
+    
+    /* Другие мобильные стили остаются без изменений */
 }
 
 .form-link {
@@ -469,6 +561,7 @@ section h2::after {
 @media (max-width: 768px) {
     .menu-icon {
         display: flex;
+        margin-left: auto;
     }
     
     .main-nav .container {
