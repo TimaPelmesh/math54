@@ -19,7 +19,12 @@
     
     <nav class="main-nav">
         <div class="container">
-            <ul>
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu">
                 <li><a href="#home">Главная</a></li>
                 <li class="dropdown">
                     <a href="#modules">Модули</a>
@@ -182,15 +187,51 @@
         </div>
     </footer>
     
+    <div class="overlay"></div>
+
     <script>
-        // Обработка мобильного меню
         document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const menu = document.querySelector('.menu');
+            const overlay = document.querySelector('.overlay');
             const dropdowns = document.querySelectorAll('.dropdown');
             
+            // Переключение гамбургер-меню
+            menuIcon.addEventListener('click', function() {
+                menuIcon.classList.toggle('active');
+                menu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            });
+            
+            // Закрытие меню при клике на затемненную область
+            overlay.addEventListener('click', function() {
+                menuIcon.classList.remove('active');
+                menu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+            
+            // Обработка раскрывающегося меню на мобильных устройствах
             if (window.innerWidth <= 768) {
                 dropdowns.forEach(dropdown => {
-                    dropdown.addEventListener('click', function() {
-                        this.classList.toggle('active');
+                    dropdown.addEventListener('click', function(e) {
+                        if (e.target.tagName === 'A' && e.target.nextElementSibling && 
+                            e.target.nextElementSibling.classList.contains('dropdown-content')) {
+                            e.preventDefault();
+                            this.classList.toggle('active');
+                        }
+                    });
+                });
+                
+                // Закрытие меню при клике на пункт меню (кроме раскрывающихся)
+                const menuLinks = document.querySelectorAll('.menu a:not(.dropdown a)');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuIcon.classList.remove('active');
+                        menu.classList.remove('active');
+                        overlay.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
                     });
                 });
             }
