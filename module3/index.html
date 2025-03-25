@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Системы счисления | Веб-квест</title>
+    <link rel="icon" href="../icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../quest.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="quest-page">
+    <header class="quest-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">← На главную</a>
+            <h1>Модуль 3: Системы счисления</h1>
+            <div class="quest-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-stats">
+                    <span>Прогресс: 0/5</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="quest-main">
+        <div class="container">
+            <div class="quest-narrative">
+                <div class="narrative-container">
+                    <div class="narrative-icon">🔢</div>
+                    <div class="narrative-text">
+                        <h2>Язык компьютеров</h2>
+                        <p>Привет, цифровой исследователь! В этом модуле мы погрузимся в мир систем счисления - фундаментальный язык, на котором "думают" компьютеры.</p>
+                        
+                        <div class="module-topics">
+                            <h3>Темы модуля:</h3>
+                            <ul>
+                                <li>Двоичная система</li>
+                                <li>Восьмеричная система</li>
+                                <li>Шестнадцатеричная система</li>
+                                <li>Перевод между системами</li>
+                                <li>Арифметика в разных системах</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quest-board">
+                <div class="tasks-container">
+                    <!-- Задание 1: Двоичная система -->
+                    <div class="task-card active" id="task1">
+                        <div class="task-header">
+                            <span class="task-number">Задание 1</span>
+                            <span class="task-status"></span>
+                        </div>
+                        <div class="task-content">
+                            <h3>Двоичная система</h3>
+                            <p>Решите следующие задачи:</p>
+                            
+                            <div class="multi-task">
+                                <div class="task-part">
+                                    <p>1. Переведите число 42₁₀ в двоичную систему:</p>
+                                    <input type="text" class="answer-input" id="binary1" placeholder="Введите ответ">
+                                </div>
+                                
+                                <div class="task-part">
+                                    <p>2. Вычислите результат: 1011₂ + 1101₂ = ?</p>
+                                    <input type="text" class="answer-input" id="binary2" placeholder="Введите ответ в двоичной системе">
+                                </div>
+                                
+                                <div class="task-part">
+                                    <p>3. Какое минимальное количество бит нужно для представления числа 100₁₀?</p>
+                                    <input type="text" class="answer-input" id="binary3" placeholder="Введите число">
+                                </div>
+                            </div>
+                            
+                            <div class="answer-form">
+                                <button class="check-button" onclick="checkAnswer(1)">Проверить</button>
+                            </div>
+                            
+                            <div class="feedback-container" id="feedback1"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Задание 2: Восьмеричная система -->
+                    <div class="task-card" id="task2">
+                        <div class="task-header">
+                            <span class="task-number">Задание 2</span>
+                            <span class="task-status"></span>
+                        </div>
+                        <div class="task-content">
+                            <h3>Восьмеричная система</h3>
+                            <p>Восьмеричная система счисления использует цифры от 0 до 7. Выполните следующие задания:</p>
+                            
+                            <div class="conversion-task">
+                                <div class="conversion-item">
+                                    <span class="number-to-convert">Переведите 75₁₀ в восьмеричную: </span>
+                                    <input type="text" class="conversion-input" id="octal1" placeholder="Введите ответ">
+                                </div>
+                                
+                                <div class="conversion-item">
+                                    <span class="number-to-convert">Переведите 251₈ в десятичную: </span>
+                                    <input type="text" class="conversion-input" id="octal2" placeholder="Введите ответ">
+                                </div>
+                                
+                                <div class="conversion-item">
+                                    <span class="number-to-convert">Представьте 110101₂ в восьмеричной: </span>
+                                    <input type="text" class="conversion-input" id="octal3" placeholder="Введите ответ">
+                                </div>
+                            </div>
+                            
+                            <div class="answer-form">
+                                <button class="check-button" onclick="checkAnswer(2)">Проверить</button>
+                            </div>
+                            
+                            <div class="feedback-container" id="feedback2"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Задание 3: Шестнадцатеричная система -->
+                    <div class="task-card" id="task3">
+                        <div class="task-header">
+                            <span class="task-number">Задание 3</span>
+                            <span class="task-status"></span>
+                        </div>
+                        <div class="task-content">
+                            <h3>Шестнадцатеричная система</h3>
+                            <p>В шестнадцатеричной системе используются цифры от 0-9 и буквы A-F. Решите задачи:</p>
+                            
+                            <div class="hex-task">
+                                <div class="task-part">
+                                    <p>1. Что означает число 2A₁₆ в десятичной системе?</p>
+                                    <input type="text" class="answer-input" id="hex1" placeholder="Введите ответ">
+                                </div>
+                                
+                                <div class="task-part">
+                                    <p>2. Переведите RGB-цвет (255, 128, 0) в шестнадцатеричную запись #______</p>
+                                    <input type="text" class="answer-input" id="hex2" placeholder="Введите код без #">
+                                </div>
+                                
+                                <div class="task-part">
+                                    <p>3. Выберите правильное соответствие между двоичным и шестнадцатеричным представлением:</p>
+                                    <select class="answer-select" id="hex3">
+                                        <option value="">-- Выберите ответ --</option>
+                                        <option value="1">1001₂ = 9₁₆</option>
+                                        <option value="2">1111₂ = E₁₆</option>
+                                        <option value="3">10101₂ = 15₁₆</option>
+                                        <option value="4">1010₂ = A₁₆</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="answer-form">
+                                <button class="check-button" onclick="checkAnswer(3)">Проверить</button>
+                            </div>
+                            
+                            <div class="feedback-container" id="feedback3"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Задание 4: Перевод между системами -->
+                    <div class="task-card" id="task4">
+                        <div class="task-header">
+                            <span class="task-number">Задание 4</span>
+                            <span class="task-status"></span>
+                        </div>
+                        <div class="task-content">
+                            <h3>Перевод между системами</h3>
+                            <p>Заполните таблицу, сопоставив числа в разных системах счисления:</p>
+                            
+                            <div class="conversion-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Десятичная</th>
+                                            <th>Двоичная</th>
+                                            <th>Восьмеричная</th>
+                                            <th>Шестнадцатеричная</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>20</td>
+                                            <td><input type="text" id="table1-bin"></td>
+                                            <td><input type="text" id="table1-oct"></td>
+                                            <td><input type="text" id="table1-hex"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" id="table2-dec"></td>
+                                            <td>11001</td>
+                                            <td><input type="text" id="table2-oct"></td>
+                                            <td><input type="text" id="table2-hex"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" id="table3-dec"></td>
+                                            <td><input type="text" id="table3-bin"></td>
+                                            <td>73</td>
+                                            <td><input type="text" id="table3-hex"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="answer-form">
+                                <button class="check-button" onclick="checkAnswer(4)">Проверить</button>
+                            </div>
+                            
+                            <div class="feedback-container" id="feedback4"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Задание 5: Скрытая буква -->
+                    <div class="task-card" id="task5">
+                        <div class="task-header">
+                            <span class="task-number">Задание 5</span>
+                            <span class="task-status"></span>
+                        </div>
+                        <div class="task-content">
+                            <h3>Сокровища кода</h3>
+                            <p>Расшифруйте послание и найдите букву для итогового слова!</p>
+                            
+                            <div class="puzzle-container">
+                                <p>Закодированное сообщение:</p>
+                                <code>01000101</code>
+                                
+                                <p>1. Переведите этот двоичный код в десятичное число.</p>
+                                <p>2. Используйте полученное число как порядковый номер буквы в русском алфавите.</p>
+                                <p>3. Полученная буква - часть итогового слова квеста!</p>
+                                
+                                <div class="answer-form">
+                                    <input type="text" class="answer-input" id="answer5" placeholder="Введите букву" maxlength="1">
+                                    <button class="check-button" onclick="checkAnswer(5)">Проверить</button>
+                                </div>
+                            </div>
+                            
+                            <div class="feedback-container" id="feedback5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        let completedTasks = 0;
+        const totalTasks = 5;
+        
+        // Ответы для проверки
+        const answers = {
+            1: {
+                binary1: "101010",
+                binary2: "11000",
+                binary3: "7"
+            },
+            2: {
+                octal1: "113",
+                octal2: "169",
+                octal3: "65"
+            },
+            3: {
+                hex1: "42",
+                hex2: "FF8000",
+                hex3: "4"
+            },
+            4: {
+                "table1-bin": "10100",
+                "table1-oct": "24",
+                "table1-hex": "14",
+                "table2-dec": "25",
+                "table2-oct": "31",
+                "table2-hex": "19",
+                "table3-dec": "59",
+                "table3-bin": "111011",
+                "table3-hex": "3B"
+            },
+            5: "Е" // Буква из двоичного кода 01000101
+        };
+        
+        // Функция проверки ответов
+        function checkAnswer(taskNumber) {
+            let isCorrect = false;
+            let feedbackMessage = "";
+            
+            // Код проверки ответов
+            // ...
+            
+            // Визуальное отображение обратной связи и обновление прогресса
+            // ...
+        }
+    </script>
+</body>
+</html> 
