@@ -31,11 +31,11 @@
                 <li class="dropdown">
                     <a href="#modules">Модули</a>
                     <div class="dropdown-content">
-                        <a href="#module1">Технологии умного дома</a>
-                        <a href="#module2">Математическая логика</a>
-                        <a href="#module3">Системы счисления</a>
-                        <a href="#module4">Информационные технологии</a>
-                        <a href="#module5">Программирование</a>
+                        <a href="module1/index.html">Технологии умного дома</a>
+                        <a href="module2/index.html">Математическая логика</a>
+                        <a href="module3/index.html">Системы счисления</a>
+                        <a href="module4/index.html">Информационные технологии</a>
+                        <a href="module5/index.html">Программирование</a>
                     </div>
                 </li>
                 <li><a href="#about">О проекте</a></li>
@@ -222,12 +222,28 @@
             // Обработка раскрывающегося меню на мобильных устройствах
             if (window.innerWidth <= 768) {
                 dropdowns.forEach(dropdown => {
-                    dropdown.addEventListener('click', function(e) {
-                        if (e.target.tagName === 'A' && e.target.nextElementSibling && 
-                            e.target.nextElementSibling.classList.contains('dropdown-content')) {
-                            e.preventDefault();
-                            this.classList.toggle('active');
-                        }
+                    // Изменяем обработчик для заголовка выпадающего меню
+                    const dropdownToggle = dropdown.querySelector('a');
+                    if (dropdownToggle) {
+                        dropdownToggle.addEventListener('click', function(e) {
+                            if (this.nextElementSibling && 
+                                this.nextElementSibling.classList.contains('dropdown-content')) {
+                                e.preventDefault();
+                                dropdown.classList.toggle('active');
+                            }
+                        });
+                    }
+                    
+                    // Добавляем обработчик для ссылок внутри выпадающего меню
+                    const dropdownLinks = dropdown.querySelectorAll('.dropdown-content a');
+                    dropdownLinks.forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            // Не предотвращаем переход по ссылке
+                            menuIcon.classList.remove('active');
+                            menu.classList.remove('active');
+                            overlay.classList.remove('active');
+                            document.body.classList.remove('no-scroll');
+                        });
                     });
                 });
                 
@@ -241,6 +257,17 @@
                         document.body.classList.remove('no-scroll');
                     });
                 });
+            }
+            
+            // Инициализация хранилища прогресса, если оно еще не создано
+            if (!localStorage.getItem('webquest_progress')) {
+                localStorage.setItem('webquest_progress', JSON.stringify({
+                    module1: 0,
+                    module2: 0,
+                    module3: 0,
+                    module4: 0,
+                    module5: 0
+                }));
             }
         });
     </script>

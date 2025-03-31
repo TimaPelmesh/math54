@@ -213,7 +213,141 @@
             const progressPercent = (completedTasks / totalTasks) * 100;
             document.querySelector('.progress-fill').style.width = `${progressPercent}%`;
             document.querySelector('.progress-stats span').textContent = `Прогресс: ${completedTasks}/${totalTasks}`;
+            
+            // Сохраняем прогресс в localStorage
+            saveProgress();
+            
+            // Если все задания выполнены, показываем поздравление и букву
+            if (completedTasks === totalTasks) {
+                showLetterReveal();
+            }
         }
+        
+        // Функция сохранения прогресса
+        function saveProgress() {
+            // Получаем текущий прогресс
+            let progress = JSON.parse(localStorage.getItem('webquest_progress') || '{}');
+            
+            // Обновляем прогресс для первого модуля
+            progress.module1 = completedTasks;
+            
+            // Сохраняем обновленный прогресс
+            localStorage.setItem('webquest_progress', JSON.stringify(progress));
+        }
+        
+        // Функция отображения буквы и поздравления
+        function showLetterReveal() {
+            // Проверяем, не показывали ли мы уже информацию о букве
+            if (document.querySelector('.letter-reveal')) return;
+            
+            // Создаем элемент для отображения буквы
+            const letterRevealDiv = document.createElement('div');
+            letterRevealDiv.className = 'letter-reveal';
+            letterRevealDiv.innerHTML = `
+                <div class="narrative-container">
+                    <div class="narrative-icon">🎉</div>
+                    <div class="narrative-text">
+                        <h2>Поздравляем!</h2>
+                        <p>Ты успешно выполнил все задания первого модуля и получаешь букву <strong>К</strong>!</p>
+                        <p>Это первая буква итогового слова. Продолжай проходить модули, чтобы собрать все буквы!</p>
+                        <div class="letter-button-container">
+                            <a href="../finish.html" class="btn">Перейти к доске букв</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Добавляем стили для нового элемента
+            const style = document.createElement('style');
+            style.textContent = `
+                .letter-reveal {
+                    margin-top: 2rem;
+                    padding: 1.5rem;
+                    background: linear-gradient(135deg, #6CD4FF, #1E88E5);
+                    border-radius: 10px;
+                    color: white;
+                    animation: slideIn 0.5s ease-out forwards;
+                }
+                
+                @keyframes slideIn {
+                    from { transform: translateY(-20px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+                
+                .letter-button-container {
+                    margin-top: 1.5rem;
+                    text-align: center;
+                }
+                
+                .letter-button-container .btn {
+                    background-color: white;
+                    color: #1E88E5;
+                    padding: 0.8rem 1.5rem;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                    display: inline-block;
+                }
+                
+                .letter-button-container .btn:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                }
+            `;
+            
+            // Добавляем стили и элемент на страницу
+            document.head.appendChild(style);
+            document.querySelector('.quest-board').appendChild(letterRevealDiv);
+            
+            // Прокручиваем страницу к элементу
+            letterRevealDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Загрузка сохраненного прогресса при загрузке страницы
+        window.addEventListener('DOMContentLoaded', function() {
+            // Получаем прогресс из хранилища
+            const progress = JSON.parse(localStorage.getItem('webquest_progress') || '{}');
+            const savedProgress = progress.module1 || 0;
+            
+            // Если есть сохраненный прогресс, восстанавливаем его
+            if (savedProgress > 0) {
+                // Разблокируем выполненные задания
+                for (let i = 1; i <= savedProgress; i++) {
+                    const taskCard = document.getElementById(`task${i}`);
+                    if (taskCard) {
+                        taskCard.querySelector('.task-status').textContent = "✓";
+                        taskCard.querySelector('.task-status').classList.add('completed');
+                        
+                        // Разблокируем следующее задание
+                        if (i < totalTasks) {
+                            document.getElementById(`task${i + 1}`).classList.add('active');
+                        }
+                    }
+                }
+                
+                // Если следующее за последним выполненным заданием существует, активируем его
+                if (savedProgress < totalTasks) {
+                    const nextTaskCard = document.getElementById(`task${savedProgress + 1}`);
+                    if (nextTaskCard) {
+                        nextTaskCard.classList.add('active');
+                    }
+                }
+                
+                // Обновляем счетчик выполненных заданий
+                completedTasks = savedProgress;
+                
+                // Обновляем индикатор прогресса
+                const progressPercent = (completedTasks / totalTasks) * 100;
+                document.querySelector('.progress-fill').style.width = `${progressPercent}%`;
+                document.querySelector('.progress-stats span').textContent = `Прогресс: ${completedTasks}/${totalTasks}`;
+                
+                // Если все задания выполнены, показываем информацию о букве
+                if (completedTasks === totalTasks) {
+                    showLetterReveal();
+                }
+            }
+        });
     </script>
 </body>
 </html> 

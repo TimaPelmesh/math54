@@ -287,12 +287,246 @@
             let isCorrect = false;
             let feedbackMessage = "";
             
-            // Код проверки ответов
-            // ...
+            if (taskNumber === 1) {
+                // Проверка задания 1 (двоичная система)
+                const binary1 = document.getElementById("binary1").value.trim();
+                const binary2 = document.getElementById("binary2").value.trim();
+                const binary3 = document.getElementById("binary3").value.trim();
+                
+                isCorrect = (binary1 === answers[1].binary1 && 
+                             binary2 === answers[1].binary2 && 
+                             binary3 === answers[1].binary3);
+                
+                feedbackMessage = isCorrect 
+                    ? "Правильно! Ты отлично разбираешься в двоичной системе." 
+                    : "Неверно. Проверь свои ответы и попробуй еще раз.";
+            }
+            else if (taskNumber === 2) {
+                // Проверка задания 2 (восьмеричная система)
+                const octal1 = document.getElementById("octal1").value.trim();
+                const octal2 = document.getElementById("octal2").value.trim();
+                const octal3 = document.getElementById("octal3").value.trim();
+                
+                isCorrect = (octal1 === answers[2].octal1 && 
+                             octal2 === answers[2].octal2 && 
+                             octal3 === answers[2].octal3);
+                
+                feedbackMessage = isCorrect 
+                    ? "Правильно! Ты отлично разбираешься в восьмеричной системе." 
+                    : "Неверно. Проверь свои расчеты и попробуй еще раз.";
+            }
+            else if (taskNumber === 3) {
+                // Проверка задания 3 (шестнадцатеричная система)
+                const hex1 = document.getElementById("hex1").value.trim();
+                const hex2 = document.getElementById("hex2").value.toUpperCase().trim();
+                const hex3 = document.getElementById("hex3").value;
+                
+                isCorrect = (hex1 === answers[3].hex1 && 
+                             hex2 === answers[3].hex2 && 
+                             hex3 === answers[3].hex3);
+                
+                feedbackMessage = isCorrect 
+                    ? "Правильно! Ты отлично разбираешься в шестнадцатеричной системе." 
+                    : "Неверно. Проверь свои ответы. Особенно внимательно проверь RGB-представление.";
+            }
+            else if (taskNumber === 4) {
+                // Проверка задания 4 (перевод между системами)
+                const table1Bin = document.getElementById("table1-bin").value.trim();
+                const table1Oct = document.getElementById("table1-oct").value.trim();
+                const table1Hex = document.getElementById("table1-hex").value.toLowerCase().trim();
+                const table2Dec = document.getElementById("table2-dec").value.trim();
+                const table2Oct = document.getElementById("table2-oct").value.trim();
+                const table2Hex = document.getElementById("table2-hex").value.toLowerCase().trim();
+                const table3Dec = document.getElementById("table3-dec").value.trim();
+                const table3Bin = document.getElementById("table3-bin").value.trim();
+                const table3Hex = document.getElementById("table3-hex").value.toUpperCase().trim();
+                
+                isCorrect = (table1Bin === answers[4]["table1-bin"] && 
+                             table1Oct === answers[4]["table1-oct"] && 
+                             table1Hex === answers[4]["table1-hex"] &&
+                             table2Dec === answers[4]["table2-dec"] && 
+                             table2Oct === answers[4]["table2-oct"] && 
+                             table2Hex === answers[4]["table2-hex"] &&
+                             table3Dec === answers[4]["table3-dec"] && 
+                             table3Bin === answers[4]["table3-bin"] && 
+                             table3Hex === answers[4]["table3-hex"]);
+                
+                feedbackMessage = isCorrect 
+                    ? "Правильно! Ты отлично справился с переводом между разными системами счисления." 
+                    : "Не все ячейки заполнены верно. Проверь свои ответы и попробуй еще раз.";
+            }
+            else if (taskNumber === 5) {
+                // Проверка задания 5 (скрытая буква)
+                const answer = document.getElementById("answer5").value.toUpperCase().trim();
+                isCorrect = answer === answers[5];
+                
+                feedbackMessage = isCorrect 
+                    ? "Правильно! Код 01000101 соответствует числу 69 в десятичной системе. В русском алфавите это буква Е. Это третья буква итогового слова!" 
+                    : "Неверно. Подсказка: переведи двоичный код 01000101 в десятичную систему и найди соответствующую букву в русском алфавите.";
+            }
             
-            // Визуальное отображение обратной связи и обновление прогресса
-            // ...
+            // Отображение обратной связи
+            const feedbackContainer = document.getElementById(`feedback${taskNumber}`);
+            feedbackContainer.textContent = feedbackMessage;
+            feedbackContainer.className = "feedback-container " + (isCorrect ? "success" : "error");
+            
+            // Обновление статуса задания и прогресса
+            if (isCorrect) {
+                const taskCard = document.getElementById(`task${taskNumber}`);
+                taskCard.querySelector('.task-status').textContent = "✓";
+                taskCard.querySelector('.task-status').classList.add('completed');
+                
+                // Разблокировка следующего задания
+                if (taskNumber < totalTasks) {
+                    document.getElementById(`task${taskNumber + 1}`).classList.add('active');
+                }
+                
+                // Обновление прогресса
+                completedTasks++;
+                updateProgress();
+            }
         }
+        
+        // Функция обновления индикатора прогресса
+        function updateProgress() {
+            const progressPercent = (completedTasks / totalTasks) * 100;
+            document.querySelector('.progress-fill').style.width = `${progressPercent}%`;
+            document.querySelector('.progress-stats span').textContent = `Прогресс: ${completedTasks}/${totalTasks}`;
+            
+            // Сохраняем прогресс в localStorage
+            saveProgress();
+            
+            // Если все задания выполнены, показываем поздравление и букву
+            if (completedTasks === totalTasks) {
+                showLetterReveal();
+            }
+        }
+        
+        // Функция сохранения прогресса
+        function saveProgress() {
+            // Получаем текущий прогресс
+            let progress = JSON.parse(localStorage.getItem('webquest_progress') || '{}');
+            
+            // Обновляем прогресс для третьего модуля
+            progress.module3 = completedTasks;
+            
+            // Сохраняем обновленный прогресс
+            localStorage.setItem('webquest_progress', JSON.stringify(progress));
+        }
+        
+        // Функция отображения буквы и поздравления
+        function showLetterReveal() {
+            // Проверяем, не показывали ли мы уже информацию о букве
+            if (document.querySelector('.letter-reveal')) return;
+            
+            // Создаем элемент для отображения буквы
+            const letterRevealDiv = document.createElement('div');
+            letterRevealDiv.className = 'letter-reveal';
+            letterRevealDiv.innerHTML = `
+                <div class="narrative-container">
+                    <div class="narrative-icon">🎉</div>
+                    <div class="narrative-text">
+                        <h2>Поздравляем!</h2>
+                        <p>Ты успешно выполнил все задания третьего модуля и получаешь букву <strong>Е</strong>!</p>
+                        <p>Это третья буква итогового слова. Продолжай проходить модули, чтобы собрать все буквы!</p>
+                        <div class="letter-button-container">
+                            <a href="../finish.html" class="btn">Перейти к доске букв</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Добавляем стили для нового элемента
+            const style = document.createElement('style');
+            style.textContent = `
+                .letter-reveal {
+                    margin-top: 2rem;
+                    padding: 1.5rem;
+                    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+                    border-radius: 10px;
+                    color: white;
+                    animation: slideIn 0.5s ease-out forwards;
+                }
+                
+                @keyframes slideIn {
+                    from { transform: translateY(-20px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+                
+                .letter-button-container {
+                    margin-top: 1.5rem;
+                    text-align: center;
+                }
+                
+                .letter-button-container .btn {
+                    background-color: white;
+                    color: #2E7D32;
+                    padding: 0.8rem 1.5rem;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                    display: inline-block;
+                }
+                
+                .letter-button-container .btn:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                }
+            `;
+            
+            // Добавляем стили и элемент на страницу
+            document.head.appendChild(style);
+            document.querySelector('.quest-board').appendChild(letterRevealDiv);
+            
+            // Прокручиваем страницу к элементу
+            letterRevealDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        // Загрузка сохраненного прогресса при загрузке страницы
+        window.addEventListener('DOMContentLoaded', function() {
+            // Получаем прогресс из хранилища
+            const progress = JSON.parse(localStorage.getItem('webquest_progress') || '{}');
+            const savedProgress = progress.module3 || 0;
+            
+            // Если есть сохраненный прогресс, восстанавливаем его
+            if (savedProgress > 0) {
+                // Разблокируем выполненные задания
+                for (let i = 1; i <= savedProgress; i++) {
+                    const taskCard = document.getElementById(`task${i}`);
+                    if (taskCard) {
+                        taskCard.querySelector('.task-status').textContent = "✓";
+                        taskCard.querySelector('.task-status').classList.add('completed');
+                        
+                        // Разблокируем следующее задание
+                        if (i < totalTasks) {
+                            document.getElementById(`task${i + 1}`).classList.add('active');
+                        }
+                    }
+                }
+                
+                // Если следующее за последним выполненным заданием существует, активируем его
+                if (savedProgress < totalTasks) {
+                    const nextTaskCard = document.getElementById(`task${savedProgress + 1}`);
+                    if (nextTaskCard) {
+                        nextTaskCard.classList.add('active');
+                    }
+                }
+                
+                // Обновляем счетчик выполненных заданий
+                completedTasks = savedProgress;
+                
+                // Обновляем индикатор прогресса
+                const progressPercent = (completedTasks / totalTasks) * 100;
+                document.querySelector('.progress-fill').style.width = `${progressPercent}%`;
+                document.querySelector('.progress-stats span').textContent = `Прогресс: ${completedTasks}/${totalTasks}`;
+                
+                // Если все задания выполнены, показываем информацию о букве
+                if (completedTasks === totalTasks) {
+                    showLetterReveal();
+                }
+            }
+        });
     </script>
 </body>
 </html> 

@@ -691,4 +691,18 @@ section h2::after {
 .module-card h3 a:hover {
     color: #3b82f6;
     text-decoration: underline;
+}
+
+.menu a.highlight-link {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.menu a.highlight-link:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 } 
