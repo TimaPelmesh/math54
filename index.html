@@ -3,273 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Веб-квест по информатике и математике</title>
-    <link rel="icon" href="icon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <title>SKL Academy</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/icon.ico" type="image/x-icon">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header class="main-header">
-        <div class="container">
-            <h1>Веб-квест: Мир цифровых технологий</h1>
-            <p>Твоё приключение в цифровой вселенной начинается здесь</p>
-        </div>
-    </header>
-    
     <nav class="main-nav">
-        <div class="container">
-            <div class="menu-icon">
-                <span></span>
-                <span></span>
-                <span></span>
+        <div class="nav-content">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <span class="gradient-text">SKL Academy</span>
+                </a>
             </div>
-            <ul class="menu">
-                <li><a href="#home">Главная</a></li>
-                <li class="dropdown">
-                    <a href="#modules">Модули</a>
-                    <div class="dropdown-content">
-                        <a href="module1/index.html">Технологии умного дома</a>
-                        <a href="module2/index.html">Математическая логика</a>
-                        <a href="module3/index.html">Системы счисления</a>
-                        <a href="module4/index.html">Информационные технологии</a>
-                        <a href="module5/index.html">Программирование</a>
-                    </div>
-                </li>
-                <li><a href="#about">О проекте</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-            </ul>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#networks">Сети</a>
+                    <a href="#security">Безопасность</a>
+                    <a href="#programming">Программирование</a>
+                    <a href="#ai">ИИ</a>
+                    <a href="about.html" class="nav-about">О проекте</a>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
-    
+
+    <div class="mobile-menu">
+        <a href="#networks">Сети</a>
+        <a href="#security">Безопасность</a>
+        <a href="#programming">Программирование</a>
+        <a href="#ai">ИИ</a>
+        <a href="about.html">О проекте</a>
+    </div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-main">
+                <div class="hero-text">
+                    <h1>SKL Academy</h1>
+                    <div class="hero-description">
+                        <p>Образовательная платформа, созданная</p>
+                        <p>энтузиастом</p>
+                        <p>для будущих IT-специалистов</p>
+                        <p class="highlight">С бесплатными образовательными материалами</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="gradient-overlay"></div>
+            <div class="particles-background"></div>
+        </div>
+    </header>
+
     <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h2>Начни своё цифровое приключение!</h2>
-                <p>Испытай свои знания и навыки в захватывающем веб-квесте, где тебя ждут загадки, головоломки и испытания из мира информатики и математики.</p>
-                <a href="#modules" class="btn">Начать приключение</a>
-            </div>
-        </section>
-        
-        <section id="modules" class="modules-section">
-            <div class="container">
-                <h2>Игровые модули</h2>
-                <p class="section-description">Выбери модуль и начни своё приключение в мире информатики</p>
-                
-                <div class="modules-grid">
-                    <!-- Модуль 1 -->
-                    <div class="module-card">
-                        <div class="module-number">01</div>
-                        <div class="module-content">
-                            <h3><a href="module1/index.html">Технологии умного дома - IoT</a></h3>
-                            <ul class="module-topics-list">
-                                <li>Введение в IoT</li>
-                                <li>Умные устройства и датчики</li>
-                                <li>Системы автоматизации</li>
-                                <li>Протоколы связи в IoT</li>
-                                <li>Безопасность умного дома</li>
-                            </ul>
+        <section id="networks" class="tech-section">
+            <h2>Сетевые технологии</h2>
+            <div class="tech-content">
+                <div class="tech-description">
+                    <p class="tech-intro">Погрузитесь в мир сетевых технологий и станьте экспертом в области построения и управления компьютерными сетями.</p>
+                    <div class="tech-features">
+                        <div class="feature">
+                            <i class="fa-solid fa-network-wired fa-2x"></i>
+                            <h4>TCP/IP и Основы</h4>
+                            <p>Изучите фундаментальные принципы работы сетей, протоколы и архитектуру TCP/IP</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fa-solid fa-server fa-2x"></i>
+                            <h4>Сетевое оборудование</h4>
+                            <p>Практика настройки маршрутизаторов, коммутаторов и другого оборудования</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fa-solid fa-diagram-project fa-2x"></i>
+                            <h4>Проектирование</h4>
+                            <p>Создание и оптимизация сетевых инфраструктур любой сложности</p>
                         </div>
                     </div>
-                    
-                    <!-- Модуль 2 -->
-                    <div class="module-card">
-                        <div class="module-number">02</div>
-                        <div class="module-content">
-                            <h3><a href="module2/index.html">Математическая логика</a></h3>
-                            <ul class="module-topics-list">
-                                <li>Логические операции</li>
-                                <li>Таблицы истинности</li>
-                                <li>Логические выражения</li>
-                                <li>Законы логики</li>
-                                <li>Логические задачи</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Модуль 3 -->
-                    <div class="module-card">
-                        <div class="module-number">03</div>
-                        <div class="module-content">
-                            <h3><a href="module3/index.html">Системы счисления</a></h3>
-                            <ul class="module-topics-list">
-                                <li>Двоичная система</li>
-                                <li>Восьмеричная система</li>
-                                <li>Шестнадцатеричная система</li>
-                                <li>Перевод между системами</li>
-                                <li>Арифметика в разных системах</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Модуль 4 -->
-                    <div class="module-card">
-                        <div class="module-number">04</div>
-                        <div class="module-content">
-                            <h3><a href="module4/index.html">Информационные технологии</a></h3>
-                            <ul class="module-topics-list">
-                                <li>Кодирование информации</li>
-                                <li>Базы данных</li>
-                                <li>Электронные таблицы</li>
-                                <li>Компьютерные сети</li>
-                                <li>Информационная безопасность</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Модуль 5 -->
-                    <div class="module-card">
-                        <div class="module-number">05</div>
-                        <div class="module-content">
-                            <h3><a href="module5/index.html">Программирование</a></h3>
-                            <ul class="module-topics-list">
-                                <li>Переменные и типы данных</li>
-                                <li>Управляющие конструкции</li>
-                                <li>Массивы и структуры данных</li>
-                                <li>Функции и методы</li>
-                                <li>ООП</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <a href="/networks" class="cta-button">
+                        <span>Начать обучение</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </section>
-        
-        <section id="about" class="about-section">
-            <div class="container">
-                <h2>О квесте</h2>
-                <p>Наш веб-квест — это увлекательное приключение в мире цифровых технологий, где тебя ждут интересные задачи, головоломки и испытания. Выполняя задания разной сложности, ты будешь зарабатывать очки, открывать новые уровни и становиться настоящим цифровым мастером!</p>
-                
-                <div class="features">
-                    <div class="feature">
-                        <div class="feature-icon">🎮</div>
-                        <h3>Игровой формат</h3>
-                        <p>Решай задачи, зарабатывай очки и открывай новые испытания</p>
+
+        <section id="security" class="tech-section">
+            <h2>Кибербезопасность</h2>
+            <div class="tech-content">
+                <div class="tech-description">
+                    <p class="tech-intro">Освойте искусство защиты информационных систем и станьте специалистом по кибербезопасности.</p>
+                    <div class="tech-features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Защита систем</h4>
+                            <p>Комплексные методы защиты информационных систем и сетевой инфраструктуры</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bug"></i>
+                            <h4>Этичный хакинг</h4>
+                            <p>Методы тестирования на проникновение и поиск уязвимостей</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-lock"></i>
+                            <h4>Криптография</h4>
+                            <p>Современные методы шифрования и защиты данных</p>
+                        </div>
                     </div>
-                    <div class="feature">
-                        <div class="feature-icon">🧩</div>
-                        <h3>Интерактивные задания</h3>
-                        <p>Разнообразные головоломки и испытания на каждом уровне</p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">🏆</div>
-                        <h3>Цифровые награды</h3>
-                        <p>Собирай виртуальные трофеи и улучшай свой рейтинг</p>
-                    </div>
+                    <a href="/security" class="cta-button">Начать обучение <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
-        
-        <section id="contacts" class="contacts-section">
-            <div class="container">
-                <h2>Контакты</h2>
-                <div class="contact-cards">
-                    <div class="contact-card">
-                        <div class="contact-icon">📧</div>
-                        <h3>Электронная почта</h3>
-                        <p>mr.tim.pumpkin@gmai.com</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">📝</div>
-                        <h3>Форма для ответов</h3>
-                        <p><a href="form.html" class="form-link">Заполнить форму с ответами</a></p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">🌐</div>
-                        <h3>Социальные сети</h3>
-                        <div class="social-links">
-                            <a href="#">Telegram</a>
+
+        <section id="programming" class="tech-section">
+            <h2>Программирование</h2>
+            <div class="tech-content">
+                <div class="tech-description">
+                    <p class="tech-intro">Станьте профессиональным разработчиком, изучив современные языки программирования и технологии.</p>
+                    <div class="tech-features">
+                        <div class="feature">
+                            <i class="fab fa-html5"></i>
+                            <h4>Веб-разработка</h4>
+                            <p>Создание современных веб-приложений с использованием HTML5, CSS3 и JavaScript</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fab fa-python"></i>
+                            <h4>Python разработка</h4>
+                            <p>Разработка приложений, автоматизация и анализ данных на Python</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-database"></i>
+                            <h4>Базы данных</h4>
+                            <p>Проектирование и работа с SQL и NoSQL базами данных</p>
                         </div>
                     </div>
+                    <a href="/programming" class="cta-button">Начать обучение <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai" class="tech-section">
+            <h2>Искусственный интеллект</h2>
+            <div class="tech-content">
+                <div class="tech-description">
+                    <p class="tech-intro">Изучите передовые технологии искусственного интеллекта и машинного обучения.</p>
+                    <div class="tech-features">
+                        <div class="feature">
+                            <i class="fas fa-brain"></i>
+                            <h4>Машинное обучение</h4>
+                            <p>Алгоритмы ML, нейронные сети и глубокое обучение</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-robot"></i>
+                            <h4>Обработка языка</h4>
+                            <p>NLP, анализ текстов и создание чат-ботов</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-eye"></i>
+                            <h4>Компьютерное зрение</h4>
+                            <p>Распознавание образов и обработка изображений</p>
+                        </div>
+                    </div>
+                    <a href="/ai" class="cta-button">Начать обучение <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
     </main>
-    
-    <footer class="main-footer">
-        <div class="container">
-            <p>Веб-квест "Мир цифровых технологий" 2025</p>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О проекте</h3>
+                <p>SKL Academy - образовательная платформа для IT-специалистов</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <a href="mailto:mr.tim.pumpkin@gmail.com"> <i class="fas fa-envelope"></i>Gmail</a>
+                <a href="https://t.me/tima_pelmeshka" target="_blank"> <i class="fab fa-telegram"></i>Telegram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SKL Academy. Все права защищены.</p>
         </div>
     </footer>
-    
-    <div class="overlay"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuIcon = document.querySelector('.menu-icon');
-            const menu = document.querySelector('.menu');
-            const overlay = document.querySelector('.overlay');
-            const dropdowns = document.querySelectorAll('.dropdown');
-            
-            // Переключение гамбургер-меню
-            menuIcon.addEventListener('click', function() {
-                menuIcon.classList.toggle('active');
-                menu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.classList.toggle('no-scroll');
-            });
-            
-            // Закрытие меню при клике на затемненную область
-            overlay.addEventListener('click', function() {
-                menuIcon.classList.remove('active');
-                menu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            });
-            
-            // Обработка раскрывающегося меню на мобильных устройствах
-            if (window.innerWidth <= 768) {
-                dropdowns.forEach(dropdown => {
-                    // Изменяем обработчик для заголовка выпадающего меню
-                    const dropdownToggle = dropdown.querySelector('a');
-                    if (dropdownToggle) {
-                        dropdownToggle.addEventListener('click', function(e) {
-                            if (this.nextElementSibling && 
-                                this.nextElementSibling.classList.contains('dropdown-content')) {
-                                e.preventDefault();
-                                dropdown.classList.toggle('active');
-                            }
-                        });
-                    }
-                    
-                    // Добавляем обработчик для ссылок внутри выпадающего меню
-                    const dropdownLinks = dropdown.querySelectorAll('.dropdown-content a');
-                    dropdownLinks.forEach(link => {
-                        link.addEventListener('click', function(e) {
-                            // Не предотвращаем переход по ссылке
-                            menuIcon.classList.remove('active');
-                            menu.classList.remove('active');
-                            overlay.classList.remove('active');
-                            document.body.classList.remove('no-scroll');
-                        });
-                    });
-                });
-                
-                // Закрытие меню при клике на пункт меню (кроме раскрывающихся)
-                const menuLinks = document.querySelectorAll('.menu a:not(.dropdown a)');
-                menuLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        menuIcon.classList.remove('active');
-                        menu.classList.remove('active');
-                        overlay.classList.remove('active');
-                        document.body.classList.remove('no-scroll');
-                    });
-                });
-            }
-            
-            // Инициализация хранилища прогресса, если оно еще не создано
-            if (!localStorage.getItem('webquest_progress')) {
-                localStorage.setItem('webquest_progress', JSON.stringify({
-                    module1: 0,
-                    module2: 0,
-                    module3: 0,
-                    module4: 0,
-                    module5: 0
-                }));
-            }
-        });
-    </script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html> 
